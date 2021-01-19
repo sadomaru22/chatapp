@@ -45,11 +45,12 @@ export default function SignIn({ setName }) {
   const classes = useStyles();
   const [disabled, setDisabled] = useState(true);
   const [string, setString] = useState('');
-  console.log(string);
+  const [isComposed, setIsComposed] = useState(false);
+//   console.log(string, isComposed);
 
   useEffect(() => {
-     const disabled = string === ''
-     setDisabled(disabled)
+     const disable = string === ''　　//空文字だったらtrue
+     setDisabled(disable)  //()の中はbool
 
   }, [string]);
 
@@ -72,15 +73,27 @@ export default function SignIn({ setName }) {
             name="name"
             autoFocus
             onChange={(e) => setString(e.target.value)}
+            onKeyDown={(e) => {
+　　　　　　　　　if (isComposed === true) return;  //以降の処理は行わない(編集中だから)            
+               if (e.key === 'Enter') {
+                  e.preventDefault();
+                  setName(e.target.value);
+               }
+            }}
+            onCompositionStart={() => {setIsComposed(true)}}
+            onCompositionEnd={() => {setIsComposed(false)}}
           />
           
           <Button
-            type="submit"
+            type="button"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
             disabled={disabled}
+            onClick={() => {
+               setName(string);  //行われるとnameが更新される
+            }}
           >
             Simula na tayo!
           </Button>
