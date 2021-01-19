@@ -6,11 +6,10 @@ import config from '../coonfig.json';
 
 export default () => {
   const [name, setName] = useState('');
-  console.log({name});
 
   if (name === '' && config.signInEnabled) {
-    return <SignIn setName={setName} />;
+    return <SignIn setName={setName} />;  //1個目のページ
   } else {
-    return <Main name={name} />;
+    return <Main name={name} />;　//chatapp側のページ
   }
 };
