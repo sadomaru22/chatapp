@@ -13,11 +13,11 @@ const useStyles = makeStyles({
    },
 });
 
-const Main = () => {
+const Main = ({ name }) => {　　//nameが渡ってくるのでここで引数として受け取っておく
    const classes = useStyles();
   return <div className={classes.rootey}>
      <MessegeList />
-     <MessegeInputField />
+     <MessegeInputField name={name}/>
   </div>;
 }
 
