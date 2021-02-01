@@ -13,7 +13,7 @@ import firebase from 'firebase';
 
   firebase.initializeApp(firebaseConfig);   //初期化
   const database = firebase.database();
-  const messagesRef = database.ref('messages');
+  export const messagesRef = database.ref('messages');
 
  export const pushMessage = ({ name, text }) => {
      messagesRef.push({ name, text });
