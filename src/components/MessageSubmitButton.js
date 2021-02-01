@@ -11,7 +11,7 @@ const MessageSummitButton = ({ inputEL, name, setText, text }) => {
    disabled={text === ''} onClick={() => {
       pushMessage({name, text });
       setText(''); //初期化
-      inputEL.current.focus();
+      inputEL.current.focus();  //更新した時もautofocus
    }}>
      <SendIcon />
    </IconButton>
